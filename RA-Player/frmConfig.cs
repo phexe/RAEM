@@ -254,6 +254,7 @@ namespace RAPlayer
             cbCoreList.Items.Clear();
             fnScanAndLoadLibretroCores();
             gbAddSystem.Enabled = false;
+            chkAutoAddArchiveExt.CheckState = CheckState.Checked;
         }
 
         private void btnSaveSystem_Click(object sender, EventArgs e)
@@ -419,7 +420,16 @@ namespace RAPlayer
 
         private void cbCoreList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtRomExt.Text = (cbCoreList.SelectedItem as ComboboxItem).Value.ToString().Split('¬')[1];
+            if(chkAutoAddArchiveExt.CheckState == CheckState.Checked)
+            {
+                string strTmpExt = (cbCoreList.SelectedItem as ComboboxItem).Value.ToString().Split('¬')[1].Replace("|zip", "").Replace("|7z", "").Replace("zip", "").Replace("7z", "") + "|zip|7z";
+                txtRomExt.Text = strTmpExt.TrimStart('|').TrimEnd('|');
+            }
+            else
+            {
+                txtRomExt.Text = (cbCoreList.SelectedItem as ComboboxItem).Value.ToString().Split('¬')[1].Replace("|zip", "").Replace("|7z", "").Replace("zip", "").Replace("7z", "").TrimStart('|').TrimEnd('|');
+            }
+            
             txtSystemName.Text = (cbCoreList.SelectedItem as ComboboxItem).ToString().Replace("\\", string.Empty).Replace("/", string.Empty).Replace("$", string.Empty).Replace("#", string.Empty);
         }
 

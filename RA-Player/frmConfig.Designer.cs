@@ -33,6 +33,8 @@
             this.btnRetroArchExecBrowser = new System.Windows.Forms.Button();
             this.txtRetroArchExecutable = new System.Windows.Forms.TextBox();
             this.gbAddSystem = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtRomExt = new System.Windows.Forms.TextBox();
             this.btnRomDirBrowser = new System.Windows.Forms.Button();
             this.btnSaveSystem = new System.Windows.Forms.Button();
             this.btnCancelAdd = new System.Windows.Forms.Button();
@@ -59,8 +61,7 @@
             this.fbdRetroArchCores = new System.Windows.Forms.FolderBrowserDialog();
             this.ofdRetroArchExec = new System.Windows.Forms.OpenFileDialog();
             this.fbdRomDirectory = new System.Windows.Forms.FolderBrowserDialog();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtRomExt = new System.Windows.Forms.TextBox();
+            this.chkAutoAddArchiveExt = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.gbAddSystem.SuspendLayout();
             this.gbCurrentSystems.SuspendLayout();
@@ -97,6 +98,7 @@
             // 
             // gbAddSystem
             // 
+            this.gbAddSystem.Controls.Add(this.chkAutoAddArchiveExt);
             this.gbAddSystem.Controls.Add(this.label4);
             this.gbAddSystem.Controls.Add(this.txtRomExt);
             this.gbAddSystem.Controls.Add(this.btnRomDirBrowser);
@@ -111,10 +113,27 @@
             this.gbAddSystem.Enabled = false;
             this.gbAddSystem.Location = new System.Drawing.Point(5, 138);
             this.gbAddSystem.Name = "gbAddSystem";
-            this.gbAddSystem.Size = new System.Drawing.Size(585, 151);
+            this.gbAddSystem.Size = new System.Drawing.Size(585, 168);
             this.gbAddSystem.TabIndex = 1;
             this.gbAddSystem.TabStop = false;
             this.gbAddSystem.Text = "Add System";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(166, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Rom Extensions (seperate with | ):";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtRomExt
+            // 
+            this.txtRomExt.Location = new System.Drawing.Point(180, 107);
+            this.txtRomExt.Name = "txtRomExt";
+            this.txtRomExt.Size = new System.Drawing.Size(178, 20);
+            this.txtRomExt.TabIndex = 9;
             // 
             // btnRomDirBrowser
             // 
@@ -128,7 +147,7 @@
             // 
             // btnSaveSystem
             // 
-            this.btnSaveSystem.Location = new System.Drawing.Point(478, 118);
+            this.btnSaveSystem.Location = new System.Drawing.Point(478, 139);
             this.btnSaveSystem.Name = "btnSaveSystem";
             this.btnSaveSystem.Size = new System.Drawing.Size(96, 23);
             this.btnSaveSystem.TabIndex = 8;
@@ -138,7 +157,7 @@
             // 
             // btnCancelAdd
             // 
-            this.btnCancelAdd.Location = new System.Drawing.Point(11, 118);
+            this.btnCancelAdd.Location = new System.Drawing.Point(11, 139);
             this.btnCancelAdd.Name = "btnCancelAdd";
             this.btnCancelAdd.Size = new System.Drawing.Size(96, 23);
             this.btnCancelAdd.TabIndex = 7;
@@ -208,16 +227,16 @@
             this.gbCurrentSystems.Controls.Add(this.btnAddSystem);
             this.gbCurrentSystems.Controls.Add(this.btnDeleteSystem);
             this.gbCurrentSystems.Enabled = false;
-            this.gbCurrentSystems.Location = new System.Drawing.Point(5, 294);
+            this.gbCurrentSystems.Location = new System.Drawing.Point(5, 312);
             this.gbCurrentSystems.Name = "gbCurrentSystems";
-            this.gbCurrentSystems.Size = new System.Drawing.Size(585, 253);
+            this.gbCurrentSystems.Size = new System.Drawing.Size(585, 235);
             this.gbCurrentSystems.TabIndex = 2;
             this.gbCurrentSystems.TabStop = false;
             this.gbCurrentSystems.Text = "Current Systems";
             // 
             // btnEditSystem
             // 
-            this.btnEditSystem.Location = new System.Drawing.Point(242, 215);
+            this.btnEditSystem.Location = new System.Drawing.Point(242, 203);
             this.btnEditSystem.Name = "btnEditSystem";
             this.btnEditSystem.Size = new System.Drawing.Size(84, 23);
             this.btnEditSystem.TabIndex = 4;
@@ -236,7 +255,7 @@
             this.lvCurrentSystems.Location = new System.Drawing.Point(11, 19);
             this.lvCurrentSystems.MultiSelect = false;
             this.lvCurrentSystems.Name = "lvCurrentSystems";
-            this.lvCurrentSystems.Size = new System.Drawing.Size(563, 190);
+            this.lvCurrentSystems.Size = new System.Drawing.Size(563, 179);
             this.lvCurrentSystems.TabIndex = 3;
             this.lvCurrentSystems.UseCompatibleStateImageBehavior = false;
             this.lvCurrentSystems.View = System.Windows.Forms.View.Details;
@@ -263,7 +282,7 @@
             // 
             // btnAddSystem
             // 
-            this.btnAddSystem.Location = new System.Drawing.Point(332, 215);
+            this.btnAddSystem.Location = new System.Drawing.Point(332, 203);
             this.btnAddSystem.Name = "btnAddSystem";
             this.btnAddSystem.Size = new System.Drawing.Size(86, 23);
             this.btnAddSystem.TabIndex = 2;
@@ -273,7 +292,7 @@
             // 
             // btnDeleteSystem
             // 
-            this.btnDeleteSystem.Location = new System.Drawing.Point(152, 215);
+            this.btnDeleteSystem.Location = new System.Drawing.Point(152, 203);
             this.btnDeleteSystem.Name = "btnDeleteSystem";
             this.btnDeleteSystem.Size = new System.Drawing.Size(84, 23);
             this.btnDeleteSystem.TabIndex = 1;
@@ -334,22 +353,17 @@
             // 
             this.fbdRetroArchCores.Description = "Locate the directory containing the Libretro cores";
             // 
-            // label4
+            // chkAutoAddArchiveExt
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(116, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Rom Extensions (seperate with | ):";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtRomExt
-            // 
-            this.txtRomExt.Location = new System.Drawing.Point(285, 107);
-            this.txtRomExt.Name = "txtRomExt";
-            this.txtRomExt.Size = new System.Drawing.Size(178, 20);
-            this.txtRomExt.TabIndex = 9;
+            this.chkAutoAddArchiveExt.AutoSize = true;
+            this.chkAutoAddArchiveExt.Checked = true;
+            this.chkAutoAddArchiveExt.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoAddArchiveExt.Location = new System.Drawing.Point(377, 109);
+            this.chkAutoAddArchiveExt.Name = "chkAutoAddArchiveExt";
+            this.chkAutoAddArchiveExt.Size = new System.Drawing.Size(180, 17);
+            this.chkAutoAddArchiveExt.TabIndex = 11;
+            this.chkAutoAddArchiveExt.Text = "Automatically Add ZIP/7Z as Ext";
+            this.chkAutoAddArchiveExt.UseVisualStyleBackColor = true;
             // 
             // frmConfig
             // 
@@ -417,5 +431,6 @@
         private System.Windows.Forms.ColumnHeader chExtensions;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtRomExt;
+        private System.Windows.Forms.CheckBox chkAutoAddArchiveExt;
     }
 }
