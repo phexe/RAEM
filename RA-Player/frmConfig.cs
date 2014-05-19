@@ -264,7 +264,7 @@ namespace RAPlayer
                 if (bEditing == false)
                 {
                     ListViewItem lviNew = new ListViewItem();
-                    lviNew.Text = txtSystemName.Text;
+                    lviNew.Text = txtSystemName.Text.Replace("\\", string.Empty).Replace("/", string.Empty).Replace("$", string.Empty).Replace("#", string.Empty);
                     lviNew.SubItems.Add((cbCoreList.SelectedItem as ComboboxItem).Value.ToString().Split('¬')[0]);
                     lviNew.SubItems.Add(txtRomDirectory.Text);
                     lviNew.SubItems.Add(txtRomExt.Text);
@@ -279,7 +279,7 @@ namespace RAPlayer
                     {
                         lvCurrentSystems.Items.Remove(lviEditing);
                         ListViewItem lviNew = new ListViewItem();
-                        lviNew.Text = txtSystemName.Text;
+                        lviNew.Text = txtSystemName.Text.Replace("\\", string.Empty).Replace("/", string.Empty).Replace("$", string.Empty).Replace("#", string.Empty);
                         lviNew.SubItems.Add((cbCoreList.SelectedItem as ComboboxItem).Value.ToString().Split('¬')[0]);
                         lviNew.SubItems.Add(txtRomDirectory.Text);
                         lviNew.SubItems.Add(txtRomExt.Text);
