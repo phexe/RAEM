@@ -56,6 +56,12 @@
     <Compile Include="frmConfig.Designer.cs">
       <DependentUpon>frmConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCoreConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCoreConfig.Designer.cs">
+      <DependentUpon>frmCoreConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmError.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfig.resx">
       <DependentUpon>frmConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCoreConfig.resx">
+      <DependentUpon>frmCoreConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmError.resx">
       <DependentUpon>frmError.cs</DependentUpon>
