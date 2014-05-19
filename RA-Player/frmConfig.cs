@@ -168,11 +168,20 @@ namespace RAPlayer
                 {
                     string strCoreName = Path.GetFileName(strCore);
                     string strFileExt = string.Empty;
+                    string strInfoDir = string.Empty;
 
-                    if (File.Exists(txtRetroArchCoresDir.Text + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info"))
+                    foreach (string strDirs in Directory.GetDirectories(Path.GetDirectoryName(txtRetroArchExecutable.Text)))
                     {
-                        strCoreName = fnGetCoreName(txtRetroArchCoresDir.Text + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info").Split('¬')[0];
-                        strFileExt = fnGetCoreName(txtRetroArchCoresDir.Text + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info").Split('¬')[1];
+                        if(Directory.GetFiles(strDirs,"*.info").Length > 0)
+                        {
+                            strInfoDir = strDirs;
+                        }
+                    }
+
+                    if (strInfoDir != string.Empty)
+                    {
+                        strCoreName = fnGetCoreName(strInfoDir + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info").Split('¬')[0];
+                        strFileExt = fnGetCoreName(strInfoDir + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info").Split('¬')[1];
                     }
 
                     ComboboxItem cbiItem = new ComboboxItem();
