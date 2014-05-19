@@ -420,6 +420,7 @@ namespace RAPlayer
         private void cbCoreList_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtRomExt.Text = (cbCoreList.SelectedItem as ComboboxItem).Value.ToString().Split('¬')[1];
+            txtSystemName.Text = (cbCoreList.SelectedItem as ComboboxItem).ToString().Replace("\\", string.Empty).Replace("/", string.Empty).Replace("$", string.Empty).Replace("#", string.Empty);
         }
 
         private void fnWriteSystemCFG(string strSystemName, string strLibretro_path, string strRgui_browser_directory)
