@@ -5,14 +5,14 @@ __________.__                         .___ _______  ________
  |____|   |___|  /\___  >__/\_ \\___  >___\____|__  /_______  /
                \/     \/      \/    \/            \/        \/ 
 
-program : RA-Player
+program : RAEM (Formerly RAEM)
 language: C# 2.0 / Mono
 author  : phexe
 website : http://www.phexe.com
 
 ================================================================
 
-RA-Player is a frontend for RetroArch and by extension libretro,
+RAEM is a frontend for RetroArch and by extension libretro,
 to make it easier to run games from RetroArch.
 
 At the moment it is fairly simple, but will hope to include;
