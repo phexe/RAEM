@@ -63,6 +63,7 @@ namespace RAPlayer
                 StreamReader srIn = new StreamReader(Application.StartupPath + Path.DirectorySeparatorChar + "RA-Player.ini");
                 String strTemp = srIn.ReadToEnd();
                 string[] strLines = strTemp.Split(Environment.NewLine.ToCharArray());
+                srIn.Close();
 
                 foreach (string strLine in strLines)
                 {
@@ -251,6 +252,7 @@ namespace RAPlayer
             pGame.StartInfo.RedirectStandardError = true;
             pGame.OutputDataReceived += (sender, args) => sbLog.AppendLine("LOG: " + args.Data);
             pGame.ErrorDataReceived += (sender, args) => sbLog.AppendLine("ERR: " + args.Data);
+            fnShowStatus("Playing: " + lvGameList.SelectedItems[0].Text.ToString(), true);
             pGame.Start();
             pGame.BeginOutputReadLine();
             pGame.BeginErrorReadLine();
@@ -259,7 +261,41 @@ namespace RAPlayer
             {                
                 frmError newError = new frmError(sbLog.ToString());
                 newError.ShowDialog();
-            }            
+            }
+            fnShowStatus("", false);
+        }
+        
+        private void lvSystems_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if(lvSystems.SelectedItems.Count > 0)
+            {
+                lvSystems.ContextMenuStrip = mnuCoreConfig;
+            }
+
+            if (lvSystems.SelectedItems.Count == 0)
+            {
+                lvSystems.ContextMenuStrip = null;
+            }
+        }
+
+        private void mnuiCoreConfig_Click(object sender, EventArgs e)
+        {
+            frmCoreConfig newCoreConfig = new frmCoreConfig(Application.StartupPath + Path.DirectorySeparatorChar + lvSystems.SelectedItems[0].Text.ToString() + ".cfg");
+            newCoreConfig.ShowDialog();
+        }
+
+        private void configureSystemControlsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(File.Exists(Path.GetDirectoryName(strRetroArchExec) + Path.DirectorySeparatorChar + "retroarch-joyconfig.exe"))
+            {
+                frmControlSelector newControlSelector = new frmControlSelector(Path.GetDirectoryName(strRetroArchExec), Application.StartupPath + Path.DirectorySeparatorChar + lvSystems.SelectedItems[0].Text.ToString() + ".cfg");
+                newControlSelector.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(null, "Please make sure \"retroarch-joyconfig.exe\" resides in the same directory as \"retroarch.exe\".", "Error!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
         }
         
     }

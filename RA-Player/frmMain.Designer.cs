@@ -28,12 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lvSystems = new System.Windows.Forms.ListView();
-            this.chSystem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvGameList = new System.Windows.Forms.ListView();
-            this.chTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mnusMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,75 +39,21 @@
             this.aboutRAPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlStatusMessage = new System.Windows.Forms.Panel();
             this.lblStatusMessage = new System.Windows.Forms.Label();
+            this.mnuCoreConfig = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuiCoreConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lvSystems = new System.Windows.Forms.ListView();
+            this.chSystem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvGameList = new System.Windows.Forms.ListView();
+            this.chTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.configureSystemControlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnusMain.SuspendLayout();
+            this.pnlStatusMessage.SuspendLayout();
+            this.mnuCoreConfig.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.mnusMain.SuspendLayout();
-            this.pnlStatusMessage.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(7, 27);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.lvSystems);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.lvGameList);
-            this.splitContainer1.Size = new System.Drawing.Size(617, 449);
-            this.splitContainer1.SplitterDistance = 203;
-            this.splitContainer1.TabIndex = 2;
-            // 
-            // lvSystems
-            // 
-            this.lvSystems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvSystems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chSystem});
-            this.lvSystems.FullRowSelect = true;
-            this.lvSystems.Location = new System.Drawing.Point(3, 3);
-            this.lvSystems.MultiSelect = false;
-            this.lvSystems.Name = "lvSystems";
-            this.lvSystems.Size = new System.Drawing.Size(197, 443);
-            this.lvSystems.TabIndex = 1;
-            this.lvSystems.UseCompatibleStateImageBehavior = false;
-            this.lvSystems.View = System.Windows.Forms.View.Details;
-            this.lvSystems.SelectedIndexChanged += new System.EventHandler(this.lvSystems_SelectedIndexChanged);
-            // 
-            // chSystem
-            // 
-            this.chSystem.Text = "System";
-            this.chSystem.Width = 188;
-            // 
-            // lvGameList
-            // 
-            this.lvGameList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvGameList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chTitle});
-            this.lvGameList.FullRowSelect = true;
-            this.lvGameList.Location = new System.Drawing.Point(3, 3);
-            this.lvGameList.MultiSelect = false;
-            this.lvGameList.Name = "lvGameList";
-            this.lvGameList.Size = new System.Drawing.Size(404, 443);
-            this.lvGameList.TabIndex = 0;
-            this.lvGameList.UseCompatibleStateImageBehavior = false;
-            this.lvGameList.View = System.Windows.Forms.View.Details;
-            this.lvGameList.DoubleClick += new System.EventHandler(this.lvGameList_DoubleClick);
-            // 
-            // chTitle
-            // 
-            this.chTitle.Text = "Game";
-            this.chTitle.Width = 392;
             // 
             // mnusMain
             // 
@@ -150,7 +92,7 @@
             // configureToolStripMenuItem
             // 
             this.configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-            this.configureToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.configureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.configureToolStripMenuItem.Text = "&Configure";
             this.configureToolStripMenuItem.Click += new System.EventHandler(this.configureToolStripMenuItem_Click);
             // 
@@ -193,6 +135,92 @@
             this.lblStatusMessage.Text = "STATUS";
             this.lblStatusMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // mnuCoreConfig
+            // 
+            this.mnuCoreConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuiCoreConfig,
+            this.configureSystemControlsToolStripMenuItem});
+            this.mnuCoreConfig.Name = "mnuCoreConfig";
+            this.mnuCoreConfig.Size = new System.Drawing.Size(217, 70);
+            // 
+            // mnuiCoreConfig
+            // 
+            this.mnuiCoreConfig.Name = "mnuiCoreConfig";
+            this.mnuiCoreConfig.Size = new System.Drawing.Size(216, 22);
+            this.mnuiCoreConfig.Text = "Configure Core";
+            this.mnuiCoreConfig.Click += new System.EventHandler(this.mnuiCoreConfig_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(7, 27);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.lvSystems);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.lvGameList);
+            this.splitContainer1.Size = new System.Drawing.Size(617, 449);
+            this.splitContainer1.SplitterDistance = 203;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // lvSystems
+            // 
+            this.lvSystems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvSystems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chSystem});
+            this.lvSystems.FullRowSelect = true;
+            this.lvSystems.Location = new System.Drawing.Point(3, 3);
+            this.lvSystems.MultiSelect = false;
+            this.lvSystems.Name = "lvSystems";
+            this.lvSystems.Size = new System.Drawing.Size(197, 443);
+            this.lvSystems.TabIndex = 1;
+            this.lvSystems.UseCompatibleStateImageBehavior = false;
+            this.lvSystems.View = System.Windows.Forms.View.Details;
+            this.lvSystems.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvSystems_ItemSelectionChanged);
+            this.lvSystems.SelectedIndexChanged += new System.EventHandler(this.lvSystems_SelectedIndexChanged);
+            // 
+            // chSystem
+            // 
+            this.chSystem.Text = "System";
+            this.chSystem.Width = 188;
+            // 
+            // lvGameList
+            // 
+            this.lvGameList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvGameList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chTitle});
+            this.lvGameList.FullRowSelect = true;
+            this.lvGameList.Location = new System.Drawing.Point(3, 3);
+            this.lvGameList.MultiSelect = false;
+            this.lvGameList.Name = "lvGameList";
+            this.lvGameList.Size = new System.Drawing.Size(404, 443);
+            this.lvGameList.TabIndex = 0;
+            this.lvGameList.UseCompatibleStateImageBehavior = false;
+            this.lvGameList.View = System.Windows.Forms.View.Details;
+            this.lvGameList.DoubleClick += new System.EventHandler(this.lvGameList_DoubleClick);
+            // 
+            // chTitle
+            // 
+            this.chTitle.Text = "Game";
+            this.chTitle.Width = 392;
+            // 
+            // configureSystemControlsToolStripMenuItem
+            // 
+            this.configureSystemControlsToolStripMenuItem.Name = "configureSystemControlsToolStripMenuItem";
+            this.configureSystemControlsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.configureSystemControlsToolStripMenuItem.Text = "Configure System Controls";
+            this.configureSystemControlsToolStripMenuItem.Click += new System.EventHandler(this.configureSystemControlsToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,12 +235,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RA-Player";
             this.Load += new System.EventHandler(this.RAPlayerUI_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
             this.mnusMain.ResumeLayout(false);
             this.mnusMain.PerformLayout();
             this.pnlStatusMessage.ResumeLayout(false);
+            this.mnuCoreConfig.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,11 +249,6 @@
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListView lvGameList;
-        private System.Windows.Forms.ColumnHeader chTitle;
-        private System.Windows.Forms.ListView lvSystems;
-        private System.Windows.Forms.ColumnHeader chSystem;
         private System.Windows.Forms.MenuStrip mnusMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -234,6 +258,14 @@
         private System.Windows.Forms.ToolStripMenuItem aboutRAPlayerToolStripMenuItem;
         private System.Windows.Forms.Panel pnlStatusMessage;
         private System.Windows.Forms.Label lblStatusMessage;
+        private System.Windows.Forms.ContextMenuStrip mnuCoreConfig;
+        private System.Windows.Forms.ToolStripMenuItem mnuiCoreConfig;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ListView lvSystems;
+        private System.Windows.Forms.ColumnHeader chSystem;
+        private System.Windows.Forms.ListView lvGameList;
+        private System.Windows.Forms.ColumnHeader chTitle;
+        private System.Windows.Forms.ToolStripMenuItem configureSystemControlsToolStripMenuItem;
     }
 }
 

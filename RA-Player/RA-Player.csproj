@@ -50,11 +50,23 @@
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChangeValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangeValue.Designer.cs">
+      <DependentUpon>frmChangeValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConfig.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmConfig.Designer.cs">
       <DependentUpon>frmConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmControlSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmControlSelector.Designer.cs">
+      <DependentUpon>frmControlSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCoreConfig.cs">
       <SubType>Form</SubType>
@@ -79,8 +91,14 @@
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmChangeValue.resx">
+      <DependentUpon>frmChangeValue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConfig.resx">
       <DependentUpon>frmConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmControlSelector.resx">
+      <DependentUpon>frmControlSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCoreConfig.resx">
       <DependentUpon>frmCoreConfig.cs</DependentUpon>

@@ -451,6 +451,7 @@ namespace RAPlayer
             srOut.WriteLine("libretro_path = \"" + strLibretro_path + "\"");
             srOut.WriteLine("rgui_browser_directory = \"" + strRgui_browser_directory + "\""); // Rom Directory
             srOut.WriteLine("config_save_on_exit = \"true\"");
+            srOut.WriteLine("video_vsync = \"false\"");
             srOut.Flush(); srOut.Flush();
             srOut.Close();
         }
