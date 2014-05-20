@@ -5,7 +5,7 @@ __________.__                         .___ _______  ________
  |____|   |___|  /\___  >__/\_ \\___  >___\____|__  /_______  /
                \/     \/      \/    \/            \/        \/ 
 
-program : RAEM (Formerly RAEM)
+program : RAEM (Formerly RA-Player)
 language: C# 2.0 / Mono
 author  : phexe
 website : http://www.phexe.com
