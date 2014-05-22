@@ -180,8 +180,15 @@ namespace raem
 
                     if (strInfoDir != string.Empty)
                     {
-                        strCoreName = fnGetCoreName(strInfoDir + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info").Split('¬')[0];
-                        strFileExt = fnGetCoreName(strInfoDir + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info").Split('¬')[1];
+                        if(File.Exists(strInfoDir + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info"))
+                        {
+                            strCoreName = fnGetCoreName(strInfoDir + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info").Split('¬')[0];
+                            strFileExt = fnGetCoreName(strInfoDir + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(strCore) + ".info").Split('¬')[1];
+                        }
+                        else
+                        {
+                            strCoreName = Path.GetFileNameWithoutExtension(strCore);
+                        }
                     }
 
                     ComboboxItem cbiItem = new ComboboxItem();
