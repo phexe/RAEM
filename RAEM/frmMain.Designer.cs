@@ -34,10 +34,17 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emulatorOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainmenuConfigureCores = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainmenuConfigureControls = new System.Windows.Forms.ToolStripMenuItem();
+            this.netPlayOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainmenuConfigureNetplay = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkEnableNetplay = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutraemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlStatusMessage = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolstripNetPlay = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblStatusMessage = new System.Windows.Forms.Label();
             this.mnuCoreConfig = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuiCoreConfig = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +56,7 @@
             this.chTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mnusMain.SuspendLayout();
             this.pnlStatusMessage.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.mnuCoreConfig.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -84,17 +92,58 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.configureToolStripMenuItem});
+            this.emulatorOptionsToolStripMenuItem,
+            this.netPlayOptionsToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
-            // configureToolStripMenuItem
+            // emulatorOptionsToolStripMenuItem
             // 
-            this.configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-            this.configureToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.configureToolStripMenuItem.Text = "&Configure";
-            this.configureToolStripMenuItem.Click += new System.EventHandler(this.configureToolStripMenuItem_Click);
+            this.emulatorOptionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainmenuConfigureCores,
+            this.mainmenuConfigureControls});
+            this.emulatorOptionsToolStripMenuItem.Name = "emulatorOptionsToolStripMenuItem";
+            this.emulatorOptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.emulatorOptionsToolStripMenuItem.Text = "Emulator Options";
+            // 
+            // mainmenuConfigureCores
+            // 
+            this.mainmenuConfigureCores.Name = "mainmenuConfigureCores";
+            this.mainmenuConfigureCores.Size = new System.Drawing.Size(175, 22);
+            this.mainmenuConfigureCores.Text = "Configure Cores";
+            this.mainmenuConfigureCores.Click += new System.EventHandler(this.mainmenuConfigureCores_Click);
+            // 
+            // mainmenuConfigureControls
+            // 
+            this.mainmenuConfigureControls.Name = "mainmenuConfigureControls";
+            this.mainmenuConfigureControls.Size = new System.Drawing.Size(175, 22);
+            this.mainmenuConfigureControls.Text = "Configure Controls";
+            this.mainmenuConfigureControls.Click += new System.EventHandler(this.mainmenuConfigureControls_Click);
+            // 
+            // netPlayOptionsToolStripMenuItem
+            // 
+            this.netPlayOptionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainmenuConfigureNetplay,
+            this.chkEnableNetplay});
+            this.netPlayOptionsToolStripMenuItem.Name = "netPlayOptionsToolStripMenuItem";
+            this.netPlayOptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.netPlayOptionsToolStripMenuItem.Text = "NetPlay Options";
+            // 
+            // mainmenuConfigureNetplay
+            // 
+            this.mainmenuConfigureNetplay.Name = "mainmenuConfigureNetplay";
+            this.mainmenuConfigureNetplay.Size = new System.Drawing.Size(171, 22);
+            this.mainmenuConfigureNetplay.Text = "Configure NetPlay";
+            this.mainmenuConfigureNetplay.Click += new System.EventHandler(this.mainmenuConfigureNetplay_Click);
+            // 
+            // chkEnableNetplay
+            // 
+            this.chkEnableNetplay.CheckOnClick = true;
+            this.chkEnableNetplay.Name = "chkEnableNetplay";
+            this.chkEnableNetplay.Size = new System.Drawing.Size(171, 22);
+            this.chkEnableNetplay.Text = "Enable Netplay";
+            this.chkEnableNetplay.Click += new System.EventHandler(this.chkEnableNetplay_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -116,11 +165,28 @@
             this.pnlStatusMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlStatusMessage.Controls.Add(this.statusStrip1);
             this.pnlStatusMessage.Controls.Add(this.lblStatusMessage);
             this.pnlStatusMessage.Location = new System.Drawing.Point(0, 0);
             this.pnlStatusMessage.Name = "pnlStatusMessage";
             this.pnlStatusMessage.Size = new System.Drawing.Size(636, 488);
             this.pnlStatusMessage.TabIndex = 4;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolstripNetPlay});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 466);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(636, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolstripNetPlay
+            // 
+            this.toolstripNetPlay.Name = "toolstripNetPlay";
+            this.toolstripNetPlay.Size = new System.Drawing.Size(99, 17);
+            this.toolstripNetPlay.Text = "NetPlay: Disabled";
             // 
             // lblStatusMessage
             // 
@@ -155,7 +221,6 @@
             this.configureSystemControlsToolStripMenuItem.Name = "configureSystemControlsToolStripMenuItem";
             this.configureSystemControlsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.configureSystemControlsToolStripMenuItem.Text = "Configure System Controls";
-            this.configureSystemControlsToolStripMenuItem.Click += new System.EventHandler(this.configureSystemControlsToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -172,7 +237,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.lvGameList);
-            this.splitContainer1.Size = new System.Drawing.Size(617, 449);
+            this.splitContainer1.Size = new System.Drawing.Size(617, 436);
             this.splitContainer1.SplitterDistance = 203;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -187,7 +252,7 @@
             this.lvSystems.Location = new System.Drawing.Point(3, 3);
             this.lvSystems.MultiSelect = false;
             this.lvSystems.Name = "lvSystems";
-            this.lvSystems.Size = new System.Drawing.Size(197, 443);
+            this.lvSystems.Size = new System.Drawing.Size(197, 430);
             this.lvSystems.TabIndex = 1;
             this.lvSystems.UseCompatibleStateImageBehavior = false;
             this.lvSystems.View = System.Windows.Forms.View.Details;
@@ -210,7 +275,7 @@
             this.lvGameList.Location = new System.Drawing.Point(3, 3);
             this.lvGameList.MultiSelect = false;
             this.lvGameList.Name = "lvGameList";
-            this.lvGameList.Size = new System.Drawing.Size(404, 443);
+            this.lvGameList.Size = new System.Drawing.Size(404, 430);
             this.lvGameList.TabIndex = 0;
             this.lvGameList.UseCompatibleStateImageBehavior = false;
             this.lvGameList.View = System.Windows.Forms.View.Details;
@@ -238,6 +303,9 @@
             this.mnusMain.ResumeLayout(false);
             this.mnusMain.PerformLayout();
             this.pnlStatusMessage.ResumeLayout(false);
+            this.pnlStatusMessage.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.mnuCoreConfig.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -253,7 +321,6 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configureToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutraemToolStripMenuItem;
         private System.Windows.Forms.Panel pnlStatusMessage;
@@ -266,6 +333,14 @@
         private System.Windows.Forms.ListView lvGameList;
         private System.Windows.Forms.ColumnHeader chTitle;
         private System.Windows.Forms.ToolStripMenuItem configureSystemControlsToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolstripNetPlay;
+        private System.Windows.Forms.ToolStripMenuItem netPlayOptionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mainmenuConfigureNetplay;
+        private System.Windows.Forms.ToolStripMenuItem chkEnableNetplay;
+        private System.Windows.Forms.ToolStripMenuItem emulatorOptionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mainmenuConfigureCores;
+        private System.Windows.Forms.ToolStripMenuItem mainmenuConfigureControls;
     }
 }
 

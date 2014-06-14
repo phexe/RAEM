@@ -459,6 +459,7 @@ namespace raem
             srOut.WriteLine("rgui_browser_directory = \"" + strRgui_browser_directory + "\""); // Rom Directory
             srOut.WriteLine("config_save_on_exit = \"true\"");
             srOut.WriteLine("video_vsync = \"false\"");
+            srOut.WriteLine("video_fullscreen = \"true\"");
             srOut.Flush(); srOut.Flush();
             srOut.Close();
         }
