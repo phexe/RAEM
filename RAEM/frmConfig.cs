@@ -264,6 +264,21 @@ namespace raem
             chkAutoAddArchiveExt.CheckState = CheckState.Checked;
         }
 
+        private void fnDebugLogger(string strLogText)
+        {
+            try
+            {
+                StreamWriter srDebug = new StreamWriter("RAEM_Debug.log", true);
+                DateTime dateNow = DateTime.Now;
+                srDebug.WriteLine(dateNow.ToShortDateString() + ":: " + strLogText);
+                srDebug.Flush();
+                srDebug.Close();
+            }catch(Exception Ex)
+            {
+                MessageBox.Show(null, "Error Writing Debug log;\r\n" + Ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnSaveSystem_Click(object sender, EventArgs e)
         {
             if (Directory.Exists(txtRomDirectory.Text))
@@ -284,16 +299,19 @@ namespace raem
 
                     if (drResult == System.Windows.Forms.DialogResult.Yes)
                     {
-                        lvCurrentSystems.Items.Remove(lviEditing);
+                        lvCurrentSystems.Items.Remove(lviEditing);                        
                         ListViewItem lviNew = new ListViewItem();
                         lviNew.Text = txtSystemName.Text.Replace("\\", string.Empty).Replace("/", string.Empty).Replace("$", string.Empty).Replace("#", string.Empty);
                         lviNew.SubItems.Add((cbCoreList.SelectedItem as ComboboxItem).Value.ToString().Split('¬')[0]);
                         lviNew.SubItems.Add(txtRomDirectory.Text);
                         lviNew.SubItems.Add(txtRomExt.Text);
-                        lvCurrentSystems.Items.Add(lviNew);                                                
+                        lvCurrentSystems.Items.Add(lviNew);  
+                        // Move file to fix overwrite problem
+                        File.Move(Application.StartupPath + Path.DirectorySeparatorChar + lviEditing.Text + ".cfg", Application.StartupPath + Path.DirectorySeparatorChar + lviNew.Text + ".cfg");                      
                         lviEditing = new ListViewItem();
                         bEditing = false;
                         fnClearNewSystem();
+                        
                     }
                 }
             }
@@ -339,7 +357,14 @@ namespace raem
             {
                 string strOut = "raem_system=" + lviRecord.Text + "¬" + lviRecord.SubItems[1].Text + "¬" + lviRecord.SubItems[2].Text + "¬" + lviRecord.SubItems[3].Text;
                 srOut.WriteLine(strOut);
-                fnWriteSystemCFG(lviRecord.Text, lviRecord.SubItems[1].Text, lviRecord.SubItems[2].Text);
+                if (File.Exists(Application.StartupPath + Path.DirectorySeparatorChar + lviRecord.Text + ".cfg"))
+                {
+                    fnUpdateSystemCFG(lviRecord.Text, lviRecord.SubItems[1].Text, lviRecord.SubItems[2].Text);
+                }
+                else
+                {
+                    fnWriteSystemCFG(lviRecord.Text, lviRecord.SubItems[1].Text, lviRecord.SubItems[2].Text);
+                }     
             }
 
             srOut.Flush();
@@ -462,6 +487,43 @@ namespace raem
             srOut.WriteLine("video_fullscreen = \"true\"");
             srOut.Flush(); srOut.Flush();
             srOut.Close();
+            //fnDebugLogger("Writing new System CFG for \"" + strSystemName + "\"");
+        }
+
+        private void fnUpdateSystemCFG(string strSystemName, string strLibretro_path, string strRgui_browser_directory)
+        {
+            StreamReader srIn = new StreamReader(Application.StartupPath + Path.DirectorySeparatorChar + strSystemName + ".cfg");
+            string[] arrayOldIni = srIn.ReadToEnd().Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            srIn.Close();
+
+            StringBuilder sbNewIni = new StringBuilder();
+
+            foreach (string strLine in arrayOldIni)
+            {
+                if(strLine.Split('=')[0].Trim() == "rgui_browser_directory")
+                {
+                    // Update Rom Directory
+                    sbNewIni.AppendLine("rgui_browser_directory = \"" + strRgui_browser_directory + "\"");
+                }
+                else if (strLine.Split('=')[0].Trim() == "libretro_path")
+                {
+                    sbNewIni.AppendLine("libretro_path = \"" + strLibretro_path + "\"");
+                }
+                else if (strLine.Split('=')[0].Trim() == "libretro_info_path")
+                {
+                    sbNewIni.AppendLine("libretro_info_path = \"" + strLibretro_path + "\"");
+                }
+                else
+                {
+                    sbNewIni.AppendLine(strLine);
+                }
+            }
+
+            StreamWriter srOut = new StreamWriter(Application.StartupPath + Path.DirectorySeparatorChar + strSystemName + ".cfg");
+            srOut.Write(sbNewIni.ToString());
+            srOut.Flush(); srOut.Flush();
+            srOut.Close();
+            //fnDebugLogger("Updating System CFG for \"" + strSystemName + "\"");
         }
 
     }
